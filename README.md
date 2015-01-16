@@ -14,7 +14,7 @@ How to run the code
 1. Build the two mex files - Coarse2FineTwoFrames.mex and mex\_ersv.mex.
 
 2. Run 'Run.m' and choose the dataset to process.
-- The test video data will be automatically downloaded.
+  - The test video data will be automatically downloaded.
 
 
 Parameters
