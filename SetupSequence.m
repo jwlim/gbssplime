@@ -9,7 +9,8 @@
 %     based on the implementation by Suha Kwak (POSTECH)
 %==========================================================================
 
-vpath = './data/';
+vdir = './data/';
+if ~exist(vdir, 'dir'), mkdir(vdir); end;
 
 if exist('set_vid', 'var')
   vid = set_vid;
@@ -32,20 +33,26 @@ else
 end
 
 switch vid
-  case 1,  vpath = [vpath, 'skating1.mat'];
-  case 2,  vpath = [vpath, 'NFL.mat'];
-  case 3,  vpath = [vpath, 'hopkins_car1.mat'];
-  case 4,  vpath = [vpath, 'hopkins_car2.mat'];
-  case 5,  vpath = [vpath, 'hopkins_people1.mat'];
-  case 6,  vpath = [vpath, 'hopkins_people2.mat'];
-  case 7,  vpath = [vpath, 'PV_person.mat'];
-  case 8,  vpath = [vpath, 'cycle1.mat'];
-  case 9,  vpath = [vpath, 'tennis.mat'];
-  case 10,  vpath = [vpath, 'ETH_reduced.mat'];
-  case 11,  vpath = [vpath, 'javelin.mat'];
-  case 12,  vpath = [vpath, 'pitching.mat'];
-  otherwise, % vid = 1; vpath = [vpath, 'skating1.mat'];
+  case 1,  seq_name = 'skating1.mat';
+  case 2,  seq_name = 'NFL.mat';
+  case 3,  seq_name = 'hopkins_car1.mat';
+  case 4,  seq_name = 'hopkins_car2.mat';
+  case 5,  seq_name = 'hopkins_people1.mat';
+  case 6,  seq_name = 'hopkins_people2.mat';
+  case 7,  seq_name = 'PV_person.mat';
+  case 8,  seq_name = 'cycle1.mat';
+  case 9,  seq_name = 'tennis.mat';
+  case 10,  seq_name = 'ETH_reduced.mat';
+  case 11,  seq_name = 'javelin.mat';
+  case 12,  seq_name = 'pitching.mat';
+  otherwise, % vid = 1; seq_name = 'skating1.mat'];
     error(['unknown vid ' num2str(vid) '...']);
+end
+vpath = [vdir, seq_name];
+if ~exist(vpath, 'file')
+  seq_url = ['http://cvlab.hanyang.ac.kr/proj/gbssplime/data/', seq_name];
+  disp(['Downloading ' seq_name ' from ' seq_url '...' ]);
+  urlwrite(seq_url, vpath);
 end
 fprintf(1, 'Loading %d : %s...\n', vid, vpath);
 evalc(['load ', vpath]);

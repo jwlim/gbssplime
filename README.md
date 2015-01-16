@@ -5,21 +5,23 @@ Motion Estimation
 Jongwoo Lim, Bohyung Han, “Generalized Background Subtraction using Superpixels
 with Label Integrated Motion Estimation,” in ECCV 2014
 
-How to run
-----------
+Project webpage:
+http://cvlab.hanyang.ac.kr/proj/gbssplime/
 
-1. Download the dataset from
+How to run the code
+-------------------
 
-2. Build the two mex files - Coarse2FineTwoFrames.mex and mex\_ersv.mex.
+1. Build the two mex files - Coarse2FineTwoFrames.mex and mex\_ersv.mex.
 
-3. Run 'Run.m' and choose the dataset to process.
+2. Run 'Run.m' and choose the dataset to process.
+- The test video data will be automatically downloaded.
 
 
 Parameters
 ----------
 
 SetupSequence.m:
-- vpath = './data/';  : where the dataset is.
+- vdir = './data/';  : where the dataset is stored.
 - rpath = ['../Result/', num2str(vid), '/'];  : where the result is stored.
 
 Run.m
